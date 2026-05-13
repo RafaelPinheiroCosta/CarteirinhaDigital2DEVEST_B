@@ -21,6 +21,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -29,6 +30,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.rafaelcosta.carteirinhadigital2devest_b.ui.theme.CarteirinhaDigital2DEVEST_BTheme
+import com.rafaelcosta.myapplication.QrCode
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,7 +53,10 @@ fun CarteirinhaDigitalApp(modifier: Modifier = Modifier) {
         Image(
             painter = painterResource(id = R.drawable.fundo),
             contentDescription = "Fundo",
-            modifier=Modifier.fillMaxSize(),
+            modifier=Modifier
+                .fillMaxSize()
+                .alpha(0.8f)
+            ,
             contentScale = ContentScale.Crop
         )
         Column(
@@ -108,12 +113,8 @@ fun CarteirinhaDigitalApp(modifier: Modifier = Modifier) {
                     )
                 }
             }
-            Image(
-                painter = painterResource(id = R.drawable.qrcode),
-                contentDescription = "QR Code",
-                modifier = Modifier
-                    .size(200.dp)
-                    .background(Color.White)
+            QrCode(
+                conteudo = "jkhgkgfhgf"
             )
         }
 
