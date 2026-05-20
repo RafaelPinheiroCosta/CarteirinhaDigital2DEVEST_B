@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -26,6 +27,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -39,24 +42,24 @@ class MainActivity : ComponentActivity() {
         setContent {
             CarteirinhaDigital2DEVEST_BTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                   CarteirinhaDigitalApp(
-                       modifier = Modifier.padding(innerPadding)
-                   )
+                    CarteirinhaDigitalApp(
+                        modifier = Modifier.padding(innerPadding)
+                    )
                 }
             }
         }
     }
 }
+
 @Composable
 fun CarteirinhaDigitalApp(modifier: Modifier = Modifier) {
-    Box{
+    Box {
         Image(
             painter = painterResource(id = R.drawable.fundo),
             contentDescription = "Fundo",
-            modifier=Modifier
+            modifier = Modifier
                 .fillMaxSize()
-                .alpha(0.8f)
-            ,
+                .alpha(0.8f),
             contentScale = ContentScale.Crop
         )
         Column(
@@ -88,28 +91,42 @@ fun CarteirinhaDigitalApp(modifier: Modifier = Modifier) {
                             CircleShape
                         )
                 )
-                Row() {
-                    Text(
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(10.dp),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 20.dp)
+                ) {
+                   LabelText(
                         text = "Nome:",
-                        fontSize = 20.sp,
-                        color = Color.White
+                        modifier = Modifier
+                            .weight(1f)
                     )
-                    Text(
+                    ValueText(
                         text = "Rafael Costa",
-                        fontSize = 35.sp,
-                        color = Color.White
+                        modifier = Modifier
+                            .weight(3f)
                     )
                 }
-                Row() {
-                    Text(
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(10.dp),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 20.dp)
+                ) {
+                  LabelText(
                         text = "Curso:",
-                        fontSize = 20.sp,
-                        color = Color.White
+                        modifier = Modifier
+                            .weight(1f)
                     )
-                    Text(
+                    ValueText(
                         text = "Desenvolvimento de Sistemas",
                         fontSize = 25.sp,
-                        color = Color.White
+                        fontWeight = FontWeight.Normal,
+                        modifier = Modifier
+                            .weight(3f)
                     )
                 }
             }
