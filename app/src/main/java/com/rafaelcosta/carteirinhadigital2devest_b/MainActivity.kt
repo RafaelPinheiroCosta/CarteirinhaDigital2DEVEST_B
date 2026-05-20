@@ -74,62 +74,10 @@ fun CarteirinhaDigitalApp(modifier: Modifier = Modifier) {
                 modifier = Modifier
                     .width(300.dp)
             )
-            Column(
-                verticalArrangement = Arrangement.spacedBy(10.dp),
-                horizontalAlignment = Alignment.CenterHorizontally,
-            ) {
-                Image(
-                    painter = painterResource(id = R.drawable.login),
-                    contentDescription = "Foto Perfil",
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier
-                        .size(200.dp)
-                        .clip(CircleShape)
-                        .border(
-                            width = 2.dp,
-                            Color.White,
-                            CircleShape
-                        )
-                )
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(10.dp),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 20.dp)
-                ) {
-                   LabelText(
-                        text = "Nome:",
-                        modifier = Modifier
-                            .weight(1f)
-                    )
-                    ValueText(
-                        text = "Rafael Costa",
-                        modifier = Modifier
-                            .weight(3f)
-                    )
-                }
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(10.dp),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 20.dp)
-                ) {
-                  LabelText(
-                        text = "Curso:",
-                        modifier = Modifier
-                            .weight(1f)
-                    )
-                    ValueText(
-                        text = "Desenvolvimento de Sistemas",
-                        fontSize = 25.sp,
-                        fontWeight = FontWeight.Normal,
-                        modifier = Modifier
-                            .weight(3f)
-                    )
-                }
-            }
+            PerfilAluno(
+                nome = "Rafael Costa",
+                curso = "Desenvolvimento de Sistemas"
+            )
             QrCode(
                 conteudo = "jkhgkgfhgf"
             )
