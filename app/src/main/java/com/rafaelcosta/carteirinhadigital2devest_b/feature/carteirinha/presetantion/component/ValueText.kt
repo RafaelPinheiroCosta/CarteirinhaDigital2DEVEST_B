@@ -18,7 +18,7 @@ fun ValueText(
     Text(
         text = text,
         fontSize = fontSize,
-        color = Color.White,
+        color = Color.Black,
         fontWeight = fontWeight,
         modifier = modifier
     )

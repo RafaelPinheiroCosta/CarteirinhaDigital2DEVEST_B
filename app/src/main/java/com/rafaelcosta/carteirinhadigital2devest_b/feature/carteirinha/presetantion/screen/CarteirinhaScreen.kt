@@ -26,7 +26,7 @@ fun CarteirinhaScreen(
             contentDescription = "Fundo",
             modifier = Modifier
                 .fillMaxSize()
-                .alpha(0.8f),
+                .alpha(0.5f),
             contentScale = ContentScale.Crop
         )
         Column(

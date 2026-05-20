@@ -15,7 +15,7 @@ fun LabelText(
     Text(
         text = text,
         fontSize = 20.sp,
-        color = Color.White,
+        color = Color.Black,
         textAlign = TextAlign.Right,
         modifier = modifier
     )
