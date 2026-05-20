@@ -1,6 +1,5 @@
-package com.rafaelcosta.carteirinhadigital2devest_b.ui.theme
+package com.rafaelcosta.carteirinhadigital2devest_b.core.designsystem.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme

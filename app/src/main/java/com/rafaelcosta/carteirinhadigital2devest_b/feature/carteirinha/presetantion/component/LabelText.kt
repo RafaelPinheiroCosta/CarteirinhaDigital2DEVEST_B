@@ -1,4 +1,4 @@
-package com.rafaelcosta.carteirinhadigital2devest_b
+package com.rafaelcosta.carteirinhadigital2devest_b.feature.carteirinha.presetantion.component
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable

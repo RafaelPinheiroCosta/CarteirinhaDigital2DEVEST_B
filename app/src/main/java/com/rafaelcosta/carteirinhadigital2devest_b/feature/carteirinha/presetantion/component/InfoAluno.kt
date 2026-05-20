@@ -1,4 +1,4 @@
-package com.rafaelcosta.carteirinhadigital2devest_b
+package com.rafaelcosta.carteirinhadigital2devest_b.feature.carteirinha.presetantion.component
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row

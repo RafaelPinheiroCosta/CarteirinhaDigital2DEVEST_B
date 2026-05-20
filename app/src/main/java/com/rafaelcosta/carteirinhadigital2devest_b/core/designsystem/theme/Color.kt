@@ -1,4 +1,4 @@
-package com.rafaelcosta.carteirinhadigital2devest_b.ui.theme
+package com.rafaelcosta.carteirinhadigital2devest_b.core.designsystem.theme
 
 import androidx.compose.ui.graphics.Color
 

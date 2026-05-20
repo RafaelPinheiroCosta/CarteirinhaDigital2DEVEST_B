@@ -1,4 +1,4 @@
-package com.rafaelcosta.carteirinhadigital2devest_b
+package com.rafaelcosta.carteirinhadigital2devest_b.feature.carteirinha.presetantion.component
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
@@ -16,6 +16,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.rafaelcosta.carteirinhadigital2devest_b.R
 
 @Composable
 fun PerfilAluno(
