@@ -29,13 +29,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            CarteirinhaDigital2DEVEST_BTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    CarteirinhaScreen(
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
+            App()
         }
     }
 }
