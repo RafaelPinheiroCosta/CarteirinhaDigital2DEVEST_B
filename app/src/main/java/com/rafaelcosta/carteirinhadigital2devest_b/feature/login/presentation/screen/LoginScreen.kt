@@ -29,7 +29,9 @@ import com.rafaelcosta.carteirinhadigital2devest_b.app.navigation.Routes
 @Composable
 fun LoginScreen(
     modifier: Modifier = Modifier,
-    navController: NavController = NavController(LocalContext.current)
+    navController: NavController = NavController(
+        LocalContext.current
+    )
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -71,13 +73,14 @@ fun LoginScreen(
                 color = Color.Black
             ),
             colors = ButtonDefaults.buttonColors(
-                contentColor = MaterialTheme.colorScheme.primary
+                contentColor = MaterialTheme.colorScheme.secondary
             ),
             modifier = Modifier
                 .fillMaxWidth(.6f)
         ) {
             Text(
-                text = "Entrar"
+                text = "Entrar",
+                color = Color.White
             )
         }
     }
@@ -88,5 +91,6 @@ fun LoginScreen(
 )
 @Composable
 fun LoginScreenPreview() {
+
     LoginScreen()
 }
