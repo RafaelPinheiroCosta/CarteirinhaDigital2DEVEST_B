@@ -65,7 +65,7 @@ fun LoginScreen(
         )
         Button(
             onClick = {
-                navController.navigate(Routes.Carteirinha)
+                navController.navigate(Routes.Carteirinha.route)
             },
             shape= RoundedCornerShape(size=4.dp),
             border = BorderStroke(
@@ -91,6 +91,5 @@ fun LoginScreen(
 )
 @Composable
 fun LoginScreenPreview() {
-
     LoginScreen()
 }
