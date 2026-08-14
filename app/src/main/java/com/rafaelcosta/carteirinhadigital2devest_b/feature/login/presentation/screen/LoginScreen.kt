@@ -65,7 +65,7 @@ fun LoginScreen(
         )
         Button(
             onClick = {
-                navController.navigate(Routes.Carteirinha.route)
+                navController.navigate(Routes.HomeAluno.route)
             },
             shape= RoundedCornerShape(size=4.dp),
             border = BorderStroke(
