@@ -15,6 +15,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -23,16 +24,23 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.rafaelcosta.carteirinhadigital2devest_b.app.navigation.Routes
+import com.rafaelcosta.carteirinhadigital2devest_b.feature.login.presentation.LoginEvent
+import com.rafaelcosta.carteirinhadigital2devest_b.feature.login.presentation.LoginViewModel
 
 @Composable
 fun LoginScreen(
     modifier: Modifier = Modifier,
     navController: NavController = NavController(
         LocalContext.current
-    )
+    ),
+    viewModel: LoginViewModel = viewModel()
 ) {
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement
@@ -46,8 +54,10 @@ fun LoginScreen(
             fontWeight = FontWeight.Bold
         )
         TextField(
-            value = "",
-            onValueChange = {},
+            value = uiState.usuario,
+            onValueChange = { value ->
+                viewModel.onEvent(LoginEvent.OnUsuarioChange(value))
+            },
             label = {
                 Text(
                     text = "Email"
@@ -55,8 +65,10 @@ fun LoginScreen(
             }
         )
         OutlinedTextField(
-            value = "",
-            onValueChange = {},
+            value = uiState.senha,
+            onValueChange = { value ->
+                viewModel.onEvent(LoginEvent.OnSenhaChange(value))
+            },
             label = {
                 Text(
                     text = "Senha"
@@ -65,9 +77,9 @@ fun LoginScreen(
         )
         Button(
             onClick = {
-                navController.navigate(Routes.HomeAluno.route)
+                viewModel.onEvent(LoginEvent.OnEntrarClick)
             },
-            shape= RoundedCornerShape(size=4.dp),
+            shape = RoundedCornerShape(size = 4.dp),
             border = BorderStroke(
                 width = 2.dp,
                 color = Color.Black
@@ -85,6 +97,7 @@ fun LoginScreen(
         }
     }
 }
+
 @Preview(
     showBackground = true,
     showSystemUi = true
