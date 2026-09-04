@@ -32,7 +32,12 @@ fun AppNavHost(
     ) {
         composable(Routes.Login.route) {
             LoginScreen(
-                navController=navController
+                navController=navController,
+                onLoginSucesso = {
+                    usuario->
+                        sessionViewModel.setUsuarioLogado(usuario)
+                    navController.navigate(Routes.HomeAluno.route)
+                }
             )
         }
         composable(Routes.Carteirinha.route) {

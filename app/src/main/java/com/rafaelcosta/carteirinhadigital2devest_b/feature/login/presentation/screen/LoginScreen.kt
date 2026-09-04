@@ -1,15 +1,18 @@
 package com.rafaelcosta.carteirinhadigital2devest_b.feature.login.presentation.screen
 
+import android.R
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -22,6 +25,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -74,7 +78,8 @@ fun LoginScreen(
                 Text(
                     text = "Email"
                 )
-            }
+            },
+            isError = uiState.erroMessage != null
         )
         OutlinedTextField(
             value = uiState.senha,
@@ -85,8 +90,19 @@ fun LoginScreen(
                 Text(
                     text = "Senha"
                 )
-            }
+            },
+            isError = uiState.erroMessage != null
         )
+
+        uiState.erroMessage?.let{ error ->
+            Text(
+                text = error,
+                textAlign = TextAlign.Center,
+                color = MaterialTheme.colorScheme.error,
+                modifier = Modifier.fillMaxWidth(0.85f)
+            )
+        }
+
         Button(
             onClick = {
                 viewModel.onEvent(LoginEvent.OnEntrarClick)
@@ -102,10 +118,20 @@ fun LoginScreen(
             modifier = Modifier
                 .fillMaxWidth(.6f)
         ) {
-            Text(
-                text = "Entrar",
-                color = Color.White
-            )
+            if (uiState.isLoading){
+                LinearProgressIndicator(
+                    modifier = Modifier
+                        .fillMaxWidth(0.60f)
+                        .height(5.dp),
+                    color = Color.White,
+                    trackColor = Color.White.copy(alpha = 0.35f)
+                )
+            }else {
+                Text(
+                    text = "Entrar",
+                    color = Color.White
+                )
+            }
         }
     }
 }
