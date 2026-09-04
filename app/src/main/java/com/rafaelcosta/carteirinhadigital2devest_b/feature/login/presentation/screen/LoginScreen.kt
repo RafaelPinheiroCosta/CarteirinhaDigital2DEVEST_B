@@ -15,6 +15,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -28,6 +29,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.rafaelcosta.carteirinhadigital2devest_b.app.navigation.Routes
+import com.rafaelcosta.carteirinhadigital2devest_b.feature.login.domain.model.UsuarioLogado
 import com.rafaelcosta.carteirinhadigital2devest_b.feature.login.presentation.LoginEvent
 import com.rafaelcosta.carteirinhadigital2devest_b.feature.login.presentation.LoginViewModel
 
@@ -37,9 +39,19 @@ fun LoginScreen(
     navController: NavController = NavController(
         LocalContext.current
     ),
-    viewModel: LoginViewModel = viewModel()
+    viewModel: LoginViewModel = viewModel(),
+    onLoginSucesso:(UsuarioLogado)-> Unit = {}
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+
+    LaunchedEffect(uiState.usuarioLogado) {
+        uiState.usuarioLogado?.let{
+            usuario ->
+                viewModel.onEvent(LoginEvent.OnNavegacaoRealizada)
+                onLoginSucesso(usuario)
+        }
+    }
+
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
