@@ -1,4 +1,7 @@
 package com.rafaelcosta.carteirinhadigital2devest_b.feature.login.data.remote.dto
+import kotlinx.serialization.Serializable
 
-class ErrorResponseDTO {
-}
+@Serializable
+data class ErrorResponseDto(
+    val message: String? = null
+)
