@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.rafaelcosta.carteirinhadigital2devest_b.feature.login.data.repository.FakeLoginRepositoryImpl
 import com.rafaelcosta.carteirinhadigital2devest_b.feature.login.data.repository.LoginRepository
+import com.rafaelcosta.carteirinhadigital2devest_b.feature.login.data.repository.LoginRepositoryProvider
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -11,7 +12,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class LoginViewModel(
-    private val repository: LoginRepository = FakeLoginRepositoryImpl()
+    private val repository: LoginRepository = LoginRepositoryProvider.provide()
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(LoginUIState())

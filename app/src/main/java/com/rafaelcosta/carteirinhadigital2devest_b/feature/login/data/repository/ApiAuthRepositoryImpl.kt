@@ -11,9 +11,9 @@ class ApiAuthRepositoryImpl(
     private val api: AuthApi
 ) : LoginRepository {
 
-    override suspend fun login(login: String, senha: String): Result<UsuarioLogado> {
+    override suspend fun login(usuario: String, senha: String): Result<UsuarioLogado> {
         return runCatching {
-            val response = api.login(LoginRequestDto(login = login, senha = senha))
+            val response = api.login(LoginRequestDto(usuario = usuario, senha = senha))
             UsuarioLogado(
                 id = response.id,
                 nome = response.nome,
